@@ -39,10 +39,16 @@ export const getPostsBySearch = async (req, res) => {
     const { searchQuery, tags } = req.query
 
     try {
+
         const title = new RegExp(searchQuery, "i")  // i means ignore case a = A
         // note: reg exp is easier for mongodb/mongoose to search database for query
-
-        const posts = await PostMessage.find({ $or: [{ title }, { tags: { $in: tags.split(",") } }] })  // $or means find me the title or the tags  $in means match one of the tags in the array
+        let posts
+        if (tags) {
+            posts = await PostMessage.find({ $or: [{ title }, { tags: { $in: tags.split(",") } }] })  // $or means find me the title or the tags  $in means match one of the tags in the array
+        }
+        else {
+            posts = await PostMessage.find({ title })
+        }
 
         res.status(StatusCodes.OK).json(posts)
     } catch (error) {
