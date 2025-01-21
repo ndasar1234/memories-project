@@ -3,14 +3,6 @@ A full-stack social media application using React, Redux, MongoDB, NodeJS, Expre
 and search for posts by their name or hashtags.
 
 
-## Project Demo
-Deployed link on Heroku:
-https://memories-app-nikhil.herokuapp.com/
-
-Note: If /posts leads to a "Cannot GET /posts" page, please delete the posts part (link will be https://memories-app-nikhil.herokuapp.com/)
-and let it redirect back to /posts. There seems to be a bug where having /posts in the url makes heroku think it is an API call, not a client url.
-
-
 ## Technologies
 
 Frontend: Reactjs, Redux
